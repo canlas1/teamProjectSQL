@@ -40,16 +40,16 @@ router.post('/register', function(req, res) {
         });
     } else {
         // var newUser = new User({
-        // 	username: username,
-        // 	pssword: password,
-        // 	email: email,
-        // 	realname: name
+        //  username: username,
+        //  pssword: password,
+        //  email: email,
+        //  realname: name
 
         // });
 
         // User.createUser(newUser, function(err, user){
-        // 	if(err) throw err;
-        // 	console.log(user);
+        //  if(err) throw err;
+        //  console.log(user);
         // });
 
         db.User.create({
@@ -72,8 +72,9 @@ router.post('/register', function(req, res) {
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        User.getUserByUsername(username, function(err, user) {
-            if (err) throw err;
+        User.getUserByUserName({ username: username }, function(err, user) {
+            if (err) {
+                throw err };
             if (!user) {
                 return done(null, false, { message: 'Unknown User' });
             }
@@ -87,7 +88,8 @@ passport.use(new LocalStrategy(
                 }
             });
         });
-    }));
+    })
+);
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);

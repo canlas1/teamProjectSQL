@@ -44,12 +44,12 @@ module.exports.createUser = function(newUser, callback){
 	});
 }
 
-module.exports.getUserByUsername = function(username, callback){
+module.exports.getUserByUserName = function(username, callback, User){
 	var query = {username: username};
 	User.findOne(query, callback);
 }
 
-module.exports.getUserById = function(id, callback){
+module.exports.getUserById = function(id, callback, User){
 	User.findById(id, callback);
 }
 
