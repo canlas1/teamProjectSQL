@@ -40,16 +40,16 @@ router.post('/register', function(req, res) {
         });
     } else {
         // var newUser = new User({
-        // 	username: username,
-        // 	pssword: password,
-        // 	email: email,
-        // 	realname: name
+        //  username: username,
+        //  pssword: password,
+        //  email: email,
+        //  realname: name
 
         // });
 
         // User.createUser(newUser, function(err, user){
-        // 	if(err) throw err;
-        // 	console.log(user);
+        //  if(err) throw err;
+        //  console.log(user);
         // });
 
         db.User.create({
@@ -71,30 +71,26 @@ router.post('/register', function(req, res) {
 });
 
 passport.use(new LocalStrategy(
-    function(username, password, done) {
-        User.getUserByUsername(username, function(err, user) {
-            if (err) throw err;
-            if (!user) {
-                return done(null, false, { message: 'Unknown User' });
-            }
-
-            User.comparePassword(password, user.password, function(err, isMatch) {
-                if (err) throw err;
-                if (isMatch) {
-                    return done(null, user);
-                } else {
-                    return done(null, false, { message: 'Invalid password' });
-                }
-            });
-        });
-    }));
+  function(username, password, done) {
+    db.User.getUserByUsername({ where: {username: username} }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-    User.getUserById(id, function(err, user) {
+    db.User.getUserById(id, function(err, user) {
         done(err, user);
     });
 });
