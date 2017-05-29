@@ -72,9 +72,8 @@ router.post('/register', function(req, res) {
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        User.getUserByUserName({ username: username }, function(err, user) {
-            if (err) {
-                throw err };
+        User.getUserByUsername(username, function(err, user) {
+            if (err) throw err;
             if (!user) {
                 return done(null, false, { message: 'Unknown User' });
             }
@@ -88,8 +87,7 @@ passport.use(new LocalStrategy(
                 }
             });
         });
-    })
-);
+    }));
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);
