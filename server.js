@@ -5,8 +5,10 @@
     var bodyParser = require('body-parser')
     var env        = require('dotenv').load()
     var exphbs     = require('express-handlebars')
+    var path       = require("path")
 
-
+    // Express Static
+    app.use(express.static(path.join(__dirname, "app/public")));
 
     //For BodyParser
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,9 +22,9 @@
 
 
      //For Handlebars
-    app.set('views', './app/views')
-    app.engine('handlebars', exphbs({extname: '.handlebars'}));
-    app.set('view engine', '.handlebars');
+    app.set('views', path.join(__dirname, 'views'));
+    app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+    app.set('view engine', 'handlebars');
     
 
     app.get('/', function(req, res){
