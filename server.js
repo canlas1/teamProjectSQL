@@ -39,7 +39,7 @@
     passport.use(new GoogleStrategy({
     clientID: "204676919066-615sd9bf02838gra9qntjjpfdlg64opf.apps.googleusercontent.com",
     clientSecret: "VlGrdzlqAVOzsV33sFB-PV_n",
-    callbackURL: "http://localhost:3000/auth/oauth/callback"
+    callbackURL: "https://teambeerlog.herokuapp.com/auth/oauth/callback"
 
   },
 
