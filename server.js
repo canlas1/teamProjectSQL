@@ -6,6 +6,7 @@
     var env        = require('dotenv').load()
     var exphbs     = require('express-handlebars')
     var path       = require("path")
+    var PORT = process.env.PORT || 3000;
     var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
     
@@ -104,7 +105,7 @@ app.get('/logout', function(req, res) {
 
 
 
-    app.listen(3000, function(err){
+    app.listen(PORT, function(err){
         if(!err)
         console.log("Live on Port 3000"); else console.log(err)
 

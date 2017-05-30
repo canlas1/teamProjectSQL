@@ -1,10 +1,10 @@
 {
-  "name": "dennistestingsql",
+  "name": "teamprojectsql",
   "version": "1.0.0",
-  "description": "",
+  "description": "dennis testing",
   "main": "server.js",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
@@ -14,7 +14,8 @@
     "passport": "^0.3.2",
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^3.30.4"
+    "sequelize": "^3.30.4",
+    "twilio": "^3.3.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -23,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lyndachiwetelu/using-passport-with-sequelize-and-mysql.git"
+    "url": "git+https://github.com/canlas1/teamProjectSQL.git"
   },
-  "author": "",
+  "author": "Dennis",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lyndachiwetelu/using-passport-with-sequelize-and-mysql/issues"
+    "url": "https://github.com/canlas1/teamProjectSQL/issues"
   },
-  "homepage": "https://github.com/lyndachiwetelu/using-passport-with-sequelize-and-mysql#readme"
+  "homepage": "https://github.com/canlas1/teamProjectSQL#readme"
 }
