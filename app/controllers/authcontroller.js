@@ -19,6 +19,12 @@ exports.dashboard = function(req,res){
 
 }
 
+exports.beer = function(req,res){
+
+	res.render('beer'); 
+
+}
+
 exports.logout = function(req,res){
 
   req.session.destroy(function(err) {
