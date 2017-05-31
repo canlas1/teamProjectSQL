@@ -7,6 +7,7 @@
     var exphbs     = require('express-handlebars')
     var path       = require("path")
     var PORT = process.env.PORT || 3000;
+    
     var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
     
@@ -39,7 +40,13 @@
     passport.use(new GoogleStrategy({
     clientID: "84277905767-o6snqpv2rsleqi61bldusauns3135mu2.apps.googleusercontent.com",
     clientSecret: "pP2DhQC2dj15uLgLklLmqZ60",
-    callbackURL: "https://teambeerlog.herokuapp.com/oauth2/callback"
+    callbackURL: "https://localhost:3000/oauth2/callback"
+
+    // //For Google Strategy
+    // passport.use(new GoogleStrategy({
+    // clientID: "84277905767-o6snqpv2rsleqi61bldusauns3135mu2.apps.googleusercontent.com",
+    // clientSecret: "pP2DhQC2dj15uLgLklLmqZ60",
+    // callbackURL: "https://teambeerlog.herokuapp.com/oauth2/callback"
 
   },
 
@@ -79,10 +86,11 @@
  //   });
  // });
 
-app.get('/logout', function(req, res) {
+ app.get('/logout', function(req, res){
+  console.log('logging out');
   req.logout();
-   res.redirect('/');
- });
+  res.redirect('/');
+});
 
     //Models
     var models = require("./app/models");
