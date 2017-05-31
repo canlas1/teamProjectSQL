@@ -37,9 +37,9 @@
 
     //For Google Strategy
     passport.use(new GoogleStrategy({
-    clientID: "204676919066-615sd9bf02838gra9qntjjpfdlg64opf.apps.googleusercontent.com",
-    clientSecret: "VlGrdzlqAVOzsV33sFB-PV_n",
-    callbackURL: "https://teambeerlog.herokuapp.com/auth/oauth/callback"
+    clientID: "84277905767-o6snqpv2rsleqi61bldusauns3135mu2.apps.googleusercontent.com",
+    clientSecret: "pP2DhQC2dj15uLgLklLmqZ60",
+    callbackURL: "https://teambeerlog.herokuapp.com/oauth2/callback"
 
   },
 

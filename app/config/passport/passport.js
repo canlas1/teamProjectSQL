@@ -49,15 +49,17 @@
         return done(null, false, {message : 'That email is already taken'} );
       }
 
-      else
-      {
+      else{
+      
         var userPassword = generateHash(password);
-        var data =
-        { email:email,
-        password:userPassword,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
+        var data = {
+         
+          email:email,
+          password:userPassword,
+          firstname: req.body.firstname,
+          lastname: req.body.lastname
         };
+        
 
 
         User.create(data).then(function(newUser,created){
