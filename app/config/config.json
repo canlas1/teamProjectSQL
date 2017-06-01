@@ -1,24 +1,24 @@
 {
-  "development": {
+    "development": {
 
-    "username": "root",
-    "password": null,
-    "database": "beer_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "",
-    "password": null,
-    "database": "",
-    "host": "",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "",
-    "password": null,
-    "database": "",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
+        "username": "root",
+        "password": null,
+        "database": "beer_db",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "database_test",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "bgm8kbym6vznt8qe",
+        "password": "e6o0sggdo5ju0in6",
+        "database": "`xhufelgr8d3xohai`",
+        "host": "mgs0iaapcj3p9srz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        "dialect": "mysql"
+    }
 }
