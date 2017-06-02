@@ -16,16 +16,11 @@ app.post('/signup', passport.authenticate('local-signup',{
 }));
 
 
-// app.post('/dashboard/:beer', passport.authenticate('beer-signup',{ 
-//     successRedirect: '/dashboard',
-//     failureRedirect: '/signup'
-// }));
-
-
-
 app.get('/dashboard',isLoggedIn, authController.dashboard);
 
 app.get('/dashboard/beer',isLoggedIn, authController.beer);
+
+// app.post('/dashboard/beer',isLoggedIn, authController.beer);
 
 app.get('/logout',authController.logout);
 
@@ -33,7 +28,14 @@ app.get('/logout',authController.logout);
 app.post('/signin', passport.authenticate('local-signin',{ 
     successRedirect: '/dashboard',
     failureRedirect: '/signin'
-}));
+}))
+
+// app.post('/dashboard/beer', passport.authenticate('local-signin',{ 
+//     successRedirect: '/dashboard',
+//     failureRedirect: '/dashboard/beer'
+// }))
+
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
