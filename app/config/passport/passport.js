@@ -2,8 +2,8 @@
   //load bcrypt
   var bCrypt = require('bcrypt-nodejs');
 
-  module.exports = function(passport,user){
-
+  module.exports = function(passport,user,brewer){
+  var Beer = brewer;
   var User = user;
   var LocalStrategy = require('passport-local').Strategy;
 
