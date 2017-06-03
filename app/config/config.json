@@ -1,10 +1,10 @@
 {
     "development": {
 
-        "username": "drwhihpa1mrz0t78",
-        "password": "rkovfftseo6v4odk",
-        "database": "xhufelgr8d3xohai",
-        "use_env_variable": "JAWSDB_URL",
+        "username": "root",
+        "password": null,
+        "database": "beer_db",
+        "host": "127.0.0.1",
         "dialect": "mysql"
     },
     "test": {
@@ -17,7 +17,8 @@
     "production": {
         "username": "drwhihpa1mrz0t78",
         "password": "rkovfftseo6v4odk",
-        "use_env_variable": "JAWSDB_URL",
+        "use_env_variable": "DATABASE_URL",
+        "host": "mgs0iaapcj3p9srz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     }
 }
