@@ -32,6 +32,10 @@ module.exports = function(app, passport) {
         failureRedirect: '/signin'
     }))
 
+    // app.post("/api/beer", passport.authenticate("", {
+    //     Controller.addBeer}
+    //     );
+
 
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
