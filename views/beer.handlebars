@@ -1,38 +1,79 @@
-<div class="container">
-
-<h2 class="page-header">Enter Beer</h2>
-{{#if errors}}
-      {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>
-      {{/each}}
-{{/if}}
-<form method="post" action="/dashboard/beer">
-   <div class="form-group">
-    <label>Beer Name</label>
-    <input type="text" class="form-control" placeholder="Beer Name" name="beername">
-  </div>
-  <div class="form-group">
-    <label>Brewery Name</label>
-    <input type="text" class="form-control" placeholder="Brewery Name" name="breweryname">
-  </div>
-  <div class="form-group">
-    <label>Country of Origin</label>
-    <input type="text" class="form-control" placeholder="Country of Origin" name="origin">
-  </div>
-  
-   <div class="form-group">
-    <label>Type of Beer</label>
-    <input type="text" class="form-control" placeholder="Type of Beer" name="type">
-
+<div class="container body-container row">
     
+    
+    {{#if errors}} 
+    {{#each errors}}
+    <div class="alert alert-danger">
+    {{msg}}
+    </div>
+    {{/each}} 
+    {{/if}}
 
-  </div>
-  
-  <button type="submit" class="btn btn-default">Submit</button>
 
-  <a href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Logout </a>
-  <a href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Log Out! </a>
+    <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+        <h1>Add Beer Here!</h1>
+        <div class='row'>
+            
+        </div>
+        
+    <form method="post" action="/dashboard/beer">
+        <div class="form-group">
+            
+            <input type="text" class="form-control" placeholder="Beer Name" name="beername">
+        </div>
+        <div class="form-group">
+            
+            <input type="text" class="form-control" placeholder="Brewery Name" name="breweryname">
+        </div>
+        <div class="form-group">
+            
+            <input type="text" class="form-control" placeholder="Country of Origin" name="origin">
+        </div>
+        <div class="form-group">
+           
+            <input type="text" class="form-control" placeholder="Type of Beer" name="type">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+       
+        <a href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Log Out! </a>
+    </form>
+    </div>
+    {{!--
+    <div class="container">
+        <h2 class="page-header">Register</h2> {{#if errors}} {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+        {{/each}} {{/if}}
+        <form method="post" action="/signup">
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" placeholder="First Name" name="firstname">
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" name="lastname">
+            </div>
+            <div class="form-group">
+                <label>About</label>
+                <input type="text" class="form-control" placeholder="About You" name="about">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="Email" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password">
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password2">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div> --}}
 
-</form>
+
+
+
 
 </div>

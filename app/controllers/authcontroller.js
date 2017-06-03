@@ -7,6 +7,12 @@ exports.signup = function(req,res){
 
 }
 
+exports.forgot = function(req,res){
+
+	res.render('forgot'); 
+
+}
+
 exports.signin = function(req,res){
 
 	res.render('signin'); 
