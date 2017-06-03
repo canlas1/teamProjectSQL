@@ -69,6 +69,15 @@
 .loginBtn--google:focus {
   background: #E74B37;
 }
+/*fixes mouse scroll over map issue.  Now user clicks to activate map zoom.*/
+.overlay {
+   background:transparent; 
+   position:relative; 
+   width:100%;
+   height:300px; /* your iframe height */
+   top:300px;  /* your iframe height */
+   margin-top:-300px;  /* your iframe height */
+}
 nav ul a,
 nav .brand-logo {
   color: #444;
