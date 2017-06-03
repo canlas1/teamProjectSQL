@@ -98,6 +98,8 @@
 
     //Routes
     var authRoute = require('./app/routes/auth.js')(app,passport);
+    var beerpost = require('./app/routes/beerpost.js')(app);
+    
 
 
     //load passport strategies
