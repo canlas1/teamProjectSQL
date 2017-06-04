@@ -36,9 +36,26 @@ exports.beer = function(req,res){
     	var hbsObject = {
       beer: dbBeer
     };
-    return res.render("beer", hbsObject);
+    return res.render("user", hbsObject);
 
     });
+
+}
+
+exports.user = function(req,res){
+//req.params.user
+	db.user.findOne({
+      where: {
+          id: req.params.user
+        }
+    }).then(function(user) {
+      console.log(user);
+      var hbsObject = {
+      beer: user
+    };
+    return res.render("user", hbsObject);
+
+    }); 
 
 }
 
