@@ -1,3 +1,6 @@
+var db = require("../models");
+
+
 var exports = module.exports = {}
 
 
@@ -27,7 +30,15 @@ exports.dashboard = function(req,res){
 
 exports.beer = function(req,res){
 
-	res.render('beer'); 
+	db.beer.findAll({
+      // include: [db.beer]
+    }).then(function(dbBeer) {
+    	var hbsObject = {
+      beer: dbBeer
+    };
+    return res.render("beer", hbsObject);
+
+    });
 
 }
 
