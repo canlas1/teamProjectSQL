@@ -26,12 +26,6 @@ module.exports = function(app, passport) {
 
     app.get('/dashboard/beer', isLoggedIn, authController.beer);
 
-<<<<<<< HEAD
-
-
-    // app.post('/dashboard/beer',isLoggedIn, authController.beer);
-=======
->>>>>>> a65ea2a86a170318538545a4450d61039238aa43
 
     app.get('/logout', authController.logout);
 
