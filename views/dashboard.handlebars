@@ -1,7 +1,18 @@
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/dashboard" class="brand-logo"><img src="/img/Logo.png" class="logo-img"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
 
-    {{!-- <a href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Log out! </a> --}}
-   
-  
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+    
 <div id="index-banner" class="parallax-container">
 <div class="container body-container row">
        <div class="Dashboard-Header ">
@@ -24,13 +35,13 @@
             <br>
             <div class='row'>
                 <div class='input-field col s12 m12'>
-                    <input type="text" placeholder="Add a New Beer" name="input" id="input">
+                    
                     <label for='addbeer'></label>
                     <a type="button" href="dashboard/beer" id="button" class="btn btn-default" class='col s12 btn btn-large waves-effect '>Add A New Beer</a>
                 </div>
                 <br>
             </div>
-      <div class="parallax"><img src="/img/background1.jpg" alt="Unsplashed background img 1"></div>
+      <div class="parallax"><img id="barrel" src="/img/beer-barrel-keg-cask-oak.jpg" alt="Unsplashed background img 1"></div>
     </div>
     </div>
  </div>

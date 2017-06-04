@@ -1,11 +1,25 @@
-<div class="container body-container row">
-<<<<<<< HEAD
-        <div class="lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-=======
->>>>>>> a65ea2a86a170318538545a4450d61039238aa43
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/dashboard" class="brand-logo"><img src="/img/Logo.png" class="logo-img"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
 
-    <div class="container">
-        <h2 class="page-header">Enter Beer</h2> {{#if errors}} {{#each errors}}
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+
+<div class="container body-container row">
+
+        <div class="lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+
+
+        <h1 class="page-header">Enter Beer</h1> {{#if errors}} {{#each errors}}
         <div class="alert alert-danger">{{msg}}</div>
         {{/each}} {{/if}}
         <form method="post" action="/dashboard/api/beer">
@@ -24,8 +38,12 @@
             <button type="submit" class="btn btn-default">Submit</button>
             <a href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Logout </a>
         </form>
+        <form>
+        <center>
         <div class="row">
-            <div class="col s12">
+            <div class='input-field col s12'>
+                   <br>
+                   <br>
                 <table>
                     <thead>
                         <th>Beer</th>
@@ -46,6 +64,8 @@
                 </table>
             </div>
         </div>
+         </center>
+         <form>
     </div>
 </div>
 

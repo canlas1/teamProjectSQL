@@ -233,9 +233,14 @@ h3{
 
 }
 
-body{
+#barrel{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
 
-   background-image: url(../img/snow-restaurant-mountains-sky.jpg);
+body{
+  background-image: url(../img/snow-restaurant-mountains-sky.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
