@@ -31,6 +31,13 @@ module.exports = function(app, passport) {
         failureRedirect: '/signin'
     }))
 
+    app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+
+    app.get('/auth/google/callback', 
+      passport.authenticate('google', { successRedirect: '/profile',
+                                          failureRedirect: '/' }));
+
+
     // app.post("/api/beer", passport.authenticate("", {
     //     Controller.addBeer}
     //     );
