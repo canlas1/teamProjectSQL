@@ -1,10 +1,16 @@
 <div class="container body-container row">
-    <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-        <h1>Register Now!</h1>
-        <div class='row'>
-            <button class="loginBtn loginBtn--google" href="/auth/google">
+    <div class="lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+         
+         <form action="/auth" method="get">
+        <button class="loginBtn loginBtn--google"  onclick="signinGoogle()">
                 Register with Google
             </button>
+        </form>
+
+
+        <h1>Register Now!</h1>
+        <div class='row'>
+            
         </div>
         <form method="post" action="/signup">
             <div class="form-group">
@@ -25,7 +31,21 @@
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
     </div>
-
+{{!-- 
+    h1= title
+  p Welcome to #{title}
+  br
+  button(onclick="signinGoogle()") Log In with Google
+  br
+  br
+  label Username
+  input(id='username')
+  br
+  label Password
+  input(id='password', type='password')
+  br
+  button(onclick="signinDb()") Log In
+ --}}
 
     {{!--
     <div class="container">

@@ -1,7 +1,12 @@
-<div class="container body-container row">
+
     {{!-- <a href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Log out! </a> --}}
-    <div class="Dashboard-Header ">
+   
+  
+<div id="index-banner" class="parallax-container">
+<div class="container body-container row">
+       <div class="Dashboard-Header ">
         <h2>Welcome to Dashboard!</h2>
+        <h2>{{user.firstname}}</h2>
         <div class="points">
             <img class="badge" src="/img/badge1.png">
         </div>
@@ -25,11 +30,16 @@
                 </div>
                 <br>
             </div>
-        </div>
+      <div class="parallax"><img src="/img/background1.jpg" alt="Unsplashed background img 1"></div>
+    </div>
+    </div>
+ </div>
+
         <div class="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1552878.5726217635!2d-74.38828460923867!3d40.52024342056881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c257f4a1665eb1%3A0xc2a9712d875a0e10!2sNew+Jersey+Beer+Company!5e0!3m2!1sen!2sph!4v1496314954609" frameborder="0" style="border:0; width:100%; height: 300px;" allowfullscreen></iframe>
         </div>
     </div>
+   
     <div class="section">
         <div class="row">
             <hr>

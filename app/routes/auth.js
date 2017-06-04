@@ -1,9 +1,15 @@
 var authController = require('../controllers/authcontroller.js');
+var passport = require('passport');
+
+var env = {
+    AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
+    AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+    AUTH0_CALLBACK_URL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:5000/callback'
+};
 
 module.exports = function(app, passport) {
 
     app.get('/signup', authController.signup);
-
 
     app.get('/signin', authController.signin);
 
@@ -11,16 +17,16 @@ module.exports = function(app, passport) {
 
     app.get('/forgot', authController.forgot);
 
-
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/dashboard',
         failureRedirect: '/signup'
     }));
 
-
-  app.get('/dashboard', isLoggedIn, authController.dashboard);
+    app.get('/dashboard', isLoggedIn, authController.dashboard);
 
     app.get('/dashboard/beer', isLoggedIn, authController.beer);
+
+
 
     // app.post('/dashboard/beer',isLoggedIn, authController.beer);
 
@@ -32,16 +38,20 @@ module.exports = function(app, passport) {
         failureRedirect: '/signin'
     }))
 
-    app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+    app.get('/auth', isLoggedIn, function(req, res, next) {
+        res.render('user', {
+            user: req.user,
+            userProfile: JSON.stringify(req.user, null, '  ')
+        });
+    });
 
-    app.get('/auth/google/callback', 
-      passport.authenticate('google', { successRedirect: '/profile',
-                                          failureRedirect: '/' }));
+    app.get('/callback', passport.authenticate('auth0', {
+        failureRedirect: '/logout'
+    }), function(req, res) {
+        res.redirect(req.session.returnTo || '/');
+    });
 
 
-    // app.post("/api/beer", passport.authenticate("", {
-    //     Controller.addBeer}
-    //     );
 
 
     function isLoggedIn(req, res, next) {
