@@ -26,5 +26,23 @@ module.exports = function(app) {
     });
   });
 
+
+// TESTING...
+app.put("/user/:id", function(req, res) {
+
+    db.beer.findById(req.params.id)
+    .then(function(dbBeer) {
+      return dbBeer.addUser(req.body.userId);
+    })
+    .then(function(dbBeer) {
+      res.redirect("/");
+    });
+
+});
  
 };
+      // id: req.body.id,
+      // beername: req.body.beername,
+      // breweryname: req.body.breweryname,
+      // origin: req.body.origin,
+      // type: req.body.type

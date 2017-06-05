@@ -88,6 +88,12 @@
     //Models
     var models = require("./app/models");
 
+    //Associations
+    models.user.belongsToMany(models.beer, { through: models.userbeer, foreignKey: "beerId" });
+    models.beer.belongsToMany(models.user, { through: models.userbeer, foreignKey: "userId" });
+    // models.user.hasMany(models.beer, { through: 'userbeer' });
+    // models.beer.hasMany(models.user, { through: 'userbeer' });
+
 
     //Routes
     var authRoute = require('./app/routes/auth.js')(app,passport);

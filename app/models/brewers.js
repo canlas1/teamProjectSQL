@@ -28,28 +28,21 @@ module.exports = function(sequelize, Sequelize) {
             notEmpty: true
         },
 
-        // email: {
-        //     type: Sequelize.STRING,
-        //     validate: {
-        //         isEmail: true
-        //     }
-        // },
-        // password: {
-        //     type: Sequelize.STRING,
-        //     allowNull: false
-
-        // },
-        // last_login: {
-        //     type: Sequelize.DATE,
-        //     defaultValue: Sequelize.NOW
-        // },
-
         status: {
             type: Sequelize.ENUM('active', 'inactive'),
             defaultValue: 'active'
         }
 
-    });
+    }, {
+    classMethods: {
+      associate: function(models) {
+        // Beer.belongsTo(models.userbeer, {foreignKay: "id"});
+        // Beer.hasMany(models.Userbeer);
+        Beer.belongsToMany(models.user, {through: "userbeer"});
+
+      }
+    }
+  });
 
     return Beer;
 

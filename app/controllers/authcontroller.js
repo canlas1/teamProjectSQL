@@ -30,15 +30,17 @@ exports.dashboard = function(req,res){
 
 exports.beer = function(req,res){
 
-	db.beer.findAll({
-      // include: [db.beer]
-    }).then(function(dbBeer) {
-    	var hbsObject = {
-      beer: dbBeer
-    };
-    return res.render("user", hbsObject);
+	// db.beer.findAll({
+ //      // include: [db.beer]
+ //    }).then(function(dbBeer) {
+ //    	var hbsObject = {
+ //      beer: dbBeer
+ //    };
+ //    return res.render("user", hbsObject);
 
-    });
+ //    });
+  res.render('beer'); 
+
 
 }
 
