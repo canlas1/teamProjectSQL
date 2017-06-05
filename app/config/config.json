@@ -1,6 +1,5 @@
 {
     "development": {
-
         "username": "root",
         "password": null,
         "database": "beer_db",
@@ -14,11 +13,14 @@
         "host": "127.0.0.1",
         "dialect": "mysql"
     },
+
     "production": {
         "username": "drwhihpa1mrz0t78",
-        "password": "e6o0sggdo5ju0in6",
-        "database": "`xhufelgr8d3xohai`",
+        "password": "rkovfftseo6v4odk",
+        "database": "xhufelgr8d3xohai",
+        "use_env_variable": "JAWSDB_URL",
         "host": "mgs0iaapcj3p9srz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     }
 }
+

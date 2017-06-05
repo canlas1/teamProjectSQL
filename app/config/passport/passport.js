@@ -2,10 +2,15 @@
   //load bcrypt
   var bCrypt = require('bcrypt-nodejs');
 
-  module.exports = function(passport,user){
+  
 
+module.exports = function(passport,user,brewer){
+  var Beer = brewer;
   var User = user;
+
   var LocalStrategy = require('passport-local').Strategy;
+  
+  var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 
   passport.serializeUser(function(user, done) {
@@ -57,7 +62,8 @@
           email:email,
           password:userPassword,
           firstname: req.body.firstname,
-          lastname: req.body.lastname
+          lastname: req.body.lastname,
+          username: req.body.username
         };
         
 
@@ -134,5 +140,37 @@
   }
   ));
 
-  }
+
+  passport.use(new GoogleStrategy({
+      clientID: "204676919066-615sd9bf02838gra9qntjjpfdlg64opf.apps.googleusercontent.com",
+      clientSecret: "VlGrdzlqAVOzsV33sFB-PV_n",
+      callbackURL: "https://localhost:3000/oauth2/callback"
+    },
+    function(accessToken, refreshToken, profile, done) {
+        process.nextTick(function(){
+          User.findOne({'google.id': profile.id}, function(err, user){
+            if(err)
+              return done(err);
+            if(user)
+              return done(null, user);
+            else {
+              var newUser = new User();
+              newUser.google.id = profile.id;
+              newUser.google.token = accessToken;
+              newUser.google.name = profile.displayName;
+              newUser.google.email = profile.emails[0].value;
+
+              newUser.save(function(err){
+                if(err)
+                  throw err;
+                return done(null, newUser);
+              })
+              console.log(profile);
+            }
+          });
+        });
+      }
+
+  ));
+}
 
