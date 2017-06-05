@@ -37,7 +37,13 @@ module.exports = function(sequelize, Sequelize) {
         status: {
             type: Sequelize.ENUM('active', 'inactive'),
             defaultValue: 'active'
-        }
+        },
+
+        // classMethods: {
+        //     associate: function(models) {
+        //         Burger.hasOne(models.Customer);
+        //     }
+        // }
 
     });
 
