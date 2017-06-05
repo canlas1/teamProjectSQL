@@ -37,24 +37,24 @@ module.exports = function(app, passport) {
     });
 
 
-        // BEER_DB ROUTE
-    app.get('/beers/:beer', function(req,res){
-      // in here a request to http://localhost:8000/breweries/g0jHqt will fetch the same as your example code
-      brewdb.search.beers(
-        { 
-            q: req.params.beer 
-        }, function(err, beer) 
-        {
-        if(err) {
-            console.error(err);
-            res.status(500).send("An error occurred");
-        } else if(beer) { // we found the beer
-            res.send(beer);
-        } else{
-            res.status(404).send('We could not find your beer');
-        }
-      })
-    });
+    //     // BEER_DB ROUTE
+    // app.get('/beers/:beer', function(req,res){
+    //   // in here a request to http://localhost:8000/breweries/g0jHqt will fetch the same as your example code
+    //   brewdb.search.beers(
+    //     { 
+    //         q: req.params.beer 
+    //     }, function(err, beer) 
+    //     {
+    //     if(err) {
+    //         console.error(err);
+    //         res.status(500).send("An error occurred");
+    //     } else if(beer) { // we found the beer
+    //         res.send(beer);
+    //     } else{
+    //         res.status(404).send('We could not find your beer');
+    //     }
+    //   })
+    // });
 
     app.get('/signup', authController.signup);
 
