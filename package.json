@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.17.2",
+    "brewerydb-node": "0.0.1",
     "connect-ensure-login": "^0.1.1",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
@@ -20,6 +21,7 @@
     "passport-google-oauth": "^1.0.0",
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
+    "request": "^2.81.0",
     "sequelize": "^3.30.4",
     "twilio": "^3.3.0"
   },

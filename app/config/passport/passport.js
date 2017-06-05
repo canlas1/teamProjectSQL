@@ -1,6 +1,21 @@
+//load bcrypt
+var bCrypt = require('bcrypt-nodejs');
 
-  //load bcrypt
-  var bCrypt = require('bcrypt-nodejs');
+//require Auth0
+var Auth0Strategy = require('passport-auth0');
+
+// Configure Passport to use Auth0
+var strategy = new Auth0Strategy({
+    domain:       process.env.AUTH0_DOMAIN,
+    clientID:     process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL:  process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
+  }, function(accessToken, refreshToken, extraParams, profile, done) {
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+    // profile has all the information from the user
+    return done(null, profile);
+  });
 
   
 
@@ -8,10 +23,10 @@ module.exports = function(passport,user,brewer){
   var Beer = brewer;
   var User = user;
 
+  passport.use(strategy);
+
   var LocalStrategy = require('passport-local').Strategy;
   
-  var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
 
   passport.serializeUser(function(user, done) {
           done(null, user.id);
@@ -141,36 +156,36 @@ module.exports = function(passport,user,brewer){
   ));
 
 
-  passport.use(new GoogleStrategy({
-      clientID: "204676919066-615sd9bf02838gra9qntjjpfdlg64opf.apps.googleusercontent.com",
-      clientSecret: "VlGrdzlqAVOzsV33sFB-PV_n",
-      callbackURL: "https://localhost:3000/oauth2/callback"
-    },
-    function(accessToken, refreshToken, profile, done) {
-        process.nextTick(function(){
-          User.findOne({'google.id': profile.id}, function(err, user){
-            if(err)
-              return done(err);
-            if(user)
-              return done(null, user);
-            else {
-              var newUser = new User();
-              newUser.google.id = profile.id;
-              newUser.google.token = accessToken;
-              newUser.google.name = profile.displayName;
-              newUser.google.email = profile.emails[0].value;
+  // passport.use(new GoogleStrategy({
+  //     clientID: "204676919066-615sd9bf02838gra9qntjjpfdlg64opf.apps.googleusercontent.com",
+  //     clientSecret: "VlGrdzlqAVOzsV33sFB-PV_n",
+  //     callbackURL: "https://localhost:3000/oauth2/callback"
+  //   },
+    // function(accessToken, refreshToken, profile, done) {
+    //     process.nextTick(function(){
+    //       User.findOne({'google.id': profile.id}, function(err, user){
+    //         if(err)
+    //           return done(err);
+    //         if(user)
+    //           return done(null, user);
+    //         else {
+    //           var newUser = new User();
+    //           newUser.google.id = profile.id;
+    //           newUser.google.token = accessToken;
+    //           newUser.google.name = profile.displayName;
+    //           newUser.google.email = profile.emails[0].value;
 
-              newUser.save(function(err){
-                if(err)
-                  throw err;
-                return done(null, newUser);
-              })
-              // console.log(profile);
-            }
-          });
-        });
-      }
+    //           newUser.save(function(err){
+    //             if(err)
+    //               throw err;
+    //             return done(null, newUser);
+    //           })
+    //           // console.log(profile);
+    //         }
+    //       });
+    //     });
+    //   }
 
-  ));
+  //));
 }
 

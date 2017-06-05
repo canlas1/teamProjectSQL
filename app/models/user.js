@@ -45,9 +45,24 @@ module.exports = function(sequelize, Sequelize) {
                     // User.hasMany(models.beer);
         User.belongsToMany(models.beer, {through: "userbeer"});
 
+<<<<<<< HEAD
                 }
             }
         });
+=======
+        status: {
+            type: Sequelize.ENUM('active', 'inactive'),
+            defaultValue: 'active'
+        },
+
+        // classMethods: {
+        //     associate: function(models) {
+        //         Burger.hasOne(models.Customer);
+        //     }
+        // }
+
+    });
+>>>>>>> b03a4b9c9c202f4c6da64d98793474899cac05af
 
 return User;
 
