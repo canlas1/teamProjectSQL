@@ -9,9 +9,14 @@
     var PORT = process.env.PORT || 3000;
     var passport = require('passport');
     var Auth0Strategy = require('passport-auth0');
-    var session = require('express-session');
     var dotenv = require('dotenv');
     var logger = require('morgan');
+    var request = require('request')
+    var BreweryDb = require('brewerydb-node');
+    var brewdb = new  BreweryDb('4191d2d412141ffc3b1cb2e8ea798f7f');
+
+
+    // var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 
     // Express Static
@@ -34,9 +39,23 @@
     app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
     app.set('view engine', 'handlebars');
 
-
     app.get('/', function(req, res) {
         res.render('index');
+    });
+
+    // BEER_DB ROUTE
+    app.get('/beers/:beer', function(req,res){
+      // in here a request to http://localhost:8000/breweries/g0jHqt will fetch the same as your example code
+      brewdb.search.beers({ q: req.params.beer }, function(err, beer) {
+        if(err) {
+            console.error(err);
+            res.status(500).send("An error occurred");
+        } else if(beer) { // we found the beer
+            res.send(beer);
+        } else{
+            res.status(404).send('We could not find your beer');
+        }
+      })
     });
 
     // //For Google Strategy
@@ -61,27 +80,29 @@
     // ));
 
     //  GET /auth/google
-    // Use passport.authenticate() as route middleware to authenticate the
-    // request.  The first step in Google authentication will involve
-    // redirecting the user to google.com.  After authorization, Google
-    // will redirect the user back to this application at /auth/google/callback
-    // app.get('/auth/google',
-    //   passport.authenticate('google', { scope: ['openid email profile'] }));
 
-    // app.get('/auth/google/callback',
-    //   passport.authenticate('google', {
-    //     failureRedirect: '/login'
-    //   }),
-    //   function(req, res) {
-    //     // Authenticated successfully
-    //     res.redirect('/');
-    //   });
+   // Use passport.authenticate() as route middleware to authenticate the
+   // request.  The first step in Google authentication will involve
+   // redirecting the user to google.com.  After authorization, Google
+   // will redirect the user back to this application at /auth/google/callback
+ // app.get('/auth/google',
+ //   passport.authenticate('google', { scope: ['openid email profile'] }));
 
-    app.get('/logout', function(req, res) {
-        console.log('logging out');
-        req.logout();
-        res.redirect('/');
-    });
+ // app.get('/auth/google/callback',
+ //   passport.authenticate('google', {
+ //     failureRedirect: '/login'
+ //   }),
+ //   function(req, res) {
+ //     // Authenticated successfully
+ //     res.redirect('/');
+ //   });
+
+ app.get('/logout', function(req, res){
+  console.log('logging out');
+  req.logout();
+  res.redirect('/');
+});
+
 
     //Models
     var models = require("./app/models");
@@ -105,9 +126,9 @@
 
 
 
-    app.listen(PORT, function(err) {
-        if (!err)
-            console.log("Live on Port " + PORT);
+    app.listen(PORT, function(err){
+        if(!err)
+        console.log("Live on Port " + PORT );
         else console.log(err)
 
     });
