@@ -11,27 +11,8 @@
     </div>
 </nav>
 <div class="container body-container row">
-    <div class="lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px;">
-        <h1 class="page-header">Enter Beer</h1> {{#if errors}} {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>
-        {{/each}} {{/if}}
-        <form method="post" action="/dashboard/api/beer">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Beer Name" name="beername">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Brewery Name" name="breweryname">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Country of Origin" name="origin">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Type of Beer" name="type">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-            <a href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Logout </a>
-        </form>
-{{!--         <form>
+    <div class="col s12 m12">
+        <form>
             <center>
                 <div class="row">
                     <div class='input-field col s12'>
@@ -58,6 +39,6 @@
                     </div>
                 </div>
             </center>
-            </form> --}}
+        </form>
     </div>
 </div>

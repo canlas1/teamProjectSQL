@@ -7,7 +7,6 @@
     var exphbs = require('express-handlebars')
     var path = require("path")
     var PORT = process.env.PORT || 3000;
-    var passport = require('passport');
     var Auth0Strategy = require('passport-auth0');
     var dotenv = require('dotenv');
     var logger = require('morgan');

@@ -165,7 +165,7 @@ module.exports = function(passport,user,brewer){
                   throw err;
                 return done(null, newUser);
               })
-              console.log(profile);
+              // console.log(profile);
             }
           });
         });
