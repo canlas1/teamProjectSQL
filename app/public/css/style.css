@@ -244,6 +244,19 @@ h3{
   background-size: 100%;
 }
 
+#beerBackground {
+   background-image: url(../img/pexels-photo-172289.jpeg);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 100%;
+
+}
+
+.card {
+  height: 600px;
+  bottom-border: 5px solid brown;
+}
+
 body{
   background-image: url(../img/frank-luca-71973.jpg);
   background-repeat: no-repeat;
