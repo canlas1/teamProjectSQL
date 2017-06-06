@@ -262,13 +262,21 @@ height: 12px;
 
 }
 
+#beerBackground2 {
+   background-image: url(../img/frank-luca-71973.jpg);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 100%;
+
+}
+
 .card {
   height: 600px;
   bottom-border: 5px solid brown;
 }
 
 body{
-  background-image: url(../img/frank-luca-71973.jpg);
+  /*background-image: url(../img/frank-luca-71973.jpg);*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
