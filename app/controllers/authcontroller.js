@@ -24,11 +24,39 @@ exports.signin = function(req,res){
 
 exports.dashboard = function(req,res){
 
+      var userId = req.session.passport.user;
+  var username = "";
+  var apiBeer = {};
+
+  db.user.findOne({
+    where: {
+      id: userId
+    }
+  }).then(function(user){
+    var user = user.get();
+    username = user.username
+      console.log("USER",username);
+
+  })
+
   db.beer.findAll({
       // include: [db.beer]
     }).then(function(dbBeer) {
-      console.log(dbBeer);
-    return res.render("dashboard", dbBeer);
+      apiBeer = {
+      beer: dbBeer
+    }
+  })
+  // console.log("usrname", req.user.username);
+  // console.log("displayName", req.session.passport);
+  db.custombeer.findAll({
+      // include: [db.beer]
+    }).then(function(dbBeer) {
+      var hbsObject = {
+      beer: apiBeer,
+      username: username,
+      custombeer: dbBeer
+    };
+    return res.render("dashboard", hbsObject);
 
     });
 
@@ -36,15 +64,17 @@ exports.dashboard = function(req,res){
 
 exports.beer = function(req,res){
 
-  db.beer.findAll({
+db.beer.findAll({
       // include: [db.beer]
     }).then(function(dbBeer) {
       var hbsObject = {
       beer: dbBeer
     };
-    return res.render("user", hbsObject);
+
+    return res.render("beer", hbsObject);
 
     });
+
 
 }
 

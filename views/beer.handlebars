@@ -15,7 +15,7 @@
         <h1 class="page-header">Enter Beer</h1> {{#if errors}} {{#each errors}}
         <div class="alert alert-danger">{{msg}}</div>
         {{/each}} {{/if}}
-        <form method="post" action="/api/add/beer">
+        <form method="post" action="/dashboard/api/beer">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Beer Name" name="beername">
             </div>

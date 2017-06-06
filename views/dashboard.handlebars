@@ -14,12 +14,8 @@
 </nav>
 <div id="index-banner" class="parallax-container">
   <div class="container body-container row">
-  <ul>
-    {{#each user}} {{this.firstname}}
-      {{/each}}
-  </ul>
     <div class="Dashboard-Header ">
-      <h2>Welcome to Dashboard! 
+      <h2>Welcome to Dashboard  {{username}}! 
       </h2>
       {{!-- <div class= 'row' >
       <h2>{{#each user}}</h2>
@@ -46,7 +42,7 @@
         <div class='row'>
           <div class='input-field col s12 m12'>
             <label for='addbeer'></label>
-            <a type="button" href="dashboard/beer" id="button" class="btn btn-default" class='col s12 btn btn-large waves-effect '>Add A New Beer</a>
+            <a type="button" href="/dashboard/beer" id="button" class="btn btn-default" class='col s12 btn btn-large waves-effect '>Add A New Beer</a>
           </div>
           <br>
         </div>
@@ -59,6 +55,26 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1552878.5726217635!2d-74.38828460923867!3d40.52024342056881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c257f4a1665eb1%3A0xc2a9712d875a0e10!2sNew+Jersey+Beer+Company!5e0!3m2!1sen!2sph!4v1496314954609"
       frameborder="0" style="border:0; width:100%; height: 300px;" allowfullscreen></iframe>
   </div> --}}
+</div>
+
+<div class="section">
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <ul class="collection">
+                {{#each custombeer}}
+                <li class="collection-item avatar">
+                    <img src="/img/Beer-icon.png" alt="" class="circle">
+                    <span class="title">{{this.beername}}</span>
+                    <p>Brewery: {{this.breweryname}} 
+                    <br>Origin: {{this.origin}}
+                    <br>Type: {{this.type}}
+                    </p>
+                    <a href="/api/like" id="liked-beer" class="secondary-content" data-beername="{{this.beername}}" data-breweryname="{{this.breweryname}}" data-origin="{{this.origin}}" data-type="{{this.type}}" data-username="{{username}}" ><i class="material-icons">thumb_up</i></a>
+                </li>
+                {{/each}}
+            </ul>
+      </div>
+    </div>
 </div>
 
 <div class="row" id="beerBackground">
