@@ -14,9 +14,20 @@
 </nav>
 <div id="index-banner" class="parallax-container">
   <div class="container body-container row">
+  <ul>
+    {{#each user}} {{this.firstname}}
+      {{/each}}
+  </ul>
     <div class="Dashboard-Header ">
-      <h2>Welcome to Dashboard!</h2>
-      <h2>{{user.firstname}}</h2>
+      <h2>Welcome to Dashboard! 
+      </h2>
+      {{!-- <div class= 'row' >
+      <h2>{{#each user}}</h2>
+      <pre>{{this.id}}. {{this.firstname}}
+          </pre>
+
+      </div> --}}
+
       <div class="points">
         <img class="badge" src="/img/badge1.png">
       </div>
