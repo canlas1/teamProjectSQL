@@ -18,6 +18,11 @@ module.exports = function(sequelize, Sequelize) {
             notEmpty: true
         },
 
+        username: {
+            type: Sequelize.STRING,
+            notEmpty: true
+        },
+
         email: {
             type: Sequelize.STRING,
             validate: {
@@ -37,13 +42,7 @@ module.exports = function(sequelize, Sequelize) {
         status: {
             type: Sequelize.ENUM('active', 'inactive'),
             defaultValue: 'active'
-        },
-
-        // classMethods: {
-        //     associate: function(models) {
-        //         Burger.hasOne(models.Customer);
-        //     }
-        // }
+        }
 
     });
 

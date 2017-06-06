@@ -14,6 +14,7 @@ module.exports = function(app) {
 
   //   });
   // });
+
 app.post("/dashboard/api/beer", function(req, res) {
     // console.log('TEST',db.Beer);
     // console.log('TEST',db.beer);
@@ -23,9 +24,9 @@ app.post("/dashboard/api/beer", function(req, res) {
     });
   });
 
-
   app.post("/api/add/beer", function(req, res) {
     // console.log('TEST',db.Beer);
+    
    console.log(req.body);
    console.log(req.body.name)
    console.log(req.body.abv)
