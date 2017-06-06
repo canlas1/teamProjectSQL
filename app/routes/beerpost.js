@@ -15,10 +15,18 @@ module.exports = function(app) {
   //   });
   // });
 
-
+app.post("/dashboard/api/beer", function(req, res) {
+    // console.log('TEST',db.Beer);
+    // console.log('TEST',db.beer);
+    db.custombeer.create(req.body).then(function(dbBeer) {
+      // res.json(dbBeer);
+      res.redirect("/dashboard")
+    });
+  });
 
   app.post("/api/add/beer", function(req, res) {
     // console.log('TEST',db.Beer);
+    
    console.log(req.body);
    console.log(req.body.name)
    console.log(req.body.abv)

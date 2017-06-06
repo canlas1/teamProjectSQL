@@ -1,6 +1,6 @@
 module.exports = function(sequelize, Sequelize) {
 
-    var User = sequelize.define('user', {
+    var Custombeer = sequelize.define('custombeer', {
 
         id: {
             autoIncrement: true,
@@ -8,30 +8,24 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
 
-        firstname: {
+        beername: {
             type: Sequelize.STRING,
             notEmpty: true
         },
 
-        lastname: {
+        breweryname: {
             type: Sequelize.STRING,
             notEmpty: true
         },
 
-        email: {
+        origin: {
             type: Sequelize.STRING,
-            validate: {
-                isEmail: true
-            }
+            notEmpty: true
         },
-        password: {
-            type: Sequelize.STRING,
-            allowNull: false
 
-        },
-        last_login: {
-            type: Sequelize.DATE,
-            defaultValue: Sequelize.NOW
+        type: {
+            type: Sequelize.STRING,
+            notEmpty: true
         },
 
         status: {
@@ -41,6 +35,6 @@ module.exports = function(sequelize, Sequelize) {
 
     });
 
-    return User;
+    return Custombeer;
 
 }
