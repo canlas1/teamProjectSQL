@@ -35,7 +35,7 @@ exports.dashboard = function(req,res){
   }).then(function(user){
     var user = user.get();
     username = user.username
-      console.log("USER",username);
+      console.log("USER",user);
 
   })
 
@@ -49,7 +49,7 @@ exports.dashboard = function(req,res){
   db.beer.findAll({
       // include: [db.beer]
     }).then(function(dbBeer) {
-      console.log(dbBeer);
+      // console.log(dbBeer);
 
       var hbsObject = {
       beer: dbBeer,
