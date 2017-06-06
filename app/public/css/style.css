@@ -150,6 +150,12 @@ h3{
   color: #795548;
 }
 
+#no-top-margin{
+margin-top: 0;
+margin-bottom: 0;
+height: 12px;
+}
+
 .rating-box{
   width: 100%;
 }
@@ -256,13 +262,21 @@ h3{
 
 }
 
+#beerBackground2 {
+   background-image: url(../img/frank-luca-71973.jpg);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 100%;
+
+}
+
 .card {
   height: 600px;
   bottom-border: 5px solid brown;
 }
 
 body{
-  background-image: url(../img/frank-luca-71973.jpg);
+  /*background-image: url(../img/frank-luca-71973.jpg);*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;

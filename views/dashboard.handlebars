@@ -23,7 +23,7 @@
         <br>
         <div class="col s12 m12">
           <div class='input-field col s12 m12'>
-            <input type="text" placeholder="Search for Beer **** This is The API *** " name="input" id="input">
+            <input type="text" placeholder="Search for Beer, Click to add to Database" name="input" id="input">
             <label for='beersearch'></label>
           </div>
           <a type="button" id="button" class="btn btn-default" class='col s12 btn btn-large waves-effect '>Search a beer!</a>
@@ -40,15 +40,13 @@
       </div>
     </div>
   </div>
-{{!--   <div class="map">
-    <div class="overlay" onClick="style.pointerEvents='none'"></div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1552878.5726217635!2d-74.38828460923867!3d40.52024342056881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c257f4a1665eb1%3A0xc2a9712d875a0e10!2sNew+Jersey+Beer+Company!5e0!3m2!1sen!2sph!4v1496314954609"
-      frameborder="0" style="border:0; width:100%; height: 300px;" allowfullscreen></iframe>
-  </div> --}}
 </div>
 
-<div class="section">
-    <div class="row">
+
+    <div class="row" id="beerBackground2">
+    <div class="center">
+            <hr id="no-top-margin"><h3>UNIQUE ENTRIES</h3><hr>
+        </div>
       <div class="col s6 offset-s3">
         <ul class="collection">
                 {{#each custombeer}}
@@ -65,185 +63,35 @@
             </ul>
       </div>
     </div>
-</div>
-
-<div class="row" id="beerBackground">
-      <ul class="collapsible" data-collapsible="accordion">
-      {{#each beer}}
-    <li>
-      <div class="collapsible-header"><i class="material-icons">stars</i>{{this.name}}</div>
-      <div class="collapsible-body">
-      <p>ABV: {{this.abv}}<br>
-        Description: {{this.description}}<br>
-        <img src="{{this.img}}" alt="" class="circle"></p></div>
-    </li>
-    {{/each}}
-  </ul>
-        
 
 
-
-  {{!-- <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn" href="dashboard/beer">Modal</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="beer" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div> --}}
-
-{{!-- <div class="section">
-    <div class="row">
-     <ul class="collapsible" data-collapsible="accordion">
-    {{#each beer}}
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{this.beername}}</div>
-        <div class="collapsible-body">
-          <span>Brewery: {{this.breweryname}}<br>
-                Origin: {{this.origin}}<br>
-                Type: {{this.type}}
-          </span>
-        </div>
-    </li>
-    {{/each}}
- --}}
 <div class="section">
-  <div class="row" id="beerBackground">
-    <hr>
-    <div class="center">
-      <h3>BEST BEER AROUND YOUR AREA</h3>
+    <div class="row" id="beerBackground">
+        <hr>
+        <div class="center">
+            <h3>SELECTED BEERS</h3>
+        </div>
+        <hr>
+        <div id="beerHolder">
+            <div class="col s6 offset-s3">
+                <ul class="collapsible" data-collapsible="accordion">
+                    {{#each beer}}
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">stars</i>{{this.name}}</div>
+                        <div class="collapsible-body">
+                            <p>ABV: {{this.abv}}
+                                <br> Description: {{this.description}}
+                                <br>
+                                <img src="{{this.img}}" alt="" class="circle"></p>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
     </div>
-    <hr>
-
-    <div id="beerHolder">
-    </div>
-  </div>
-   {{!--  <div class="col s12 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/beer1.jpg">
-          <span class="card-title">BEER 1
-<div class="rating-box">
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_half</i>
 </div>
-</span>
-          <a href="login" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/beer2.jpg">
-          <span class="card-title">BEER 2
-<div class="rating-box">
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_half</i>
-</div>
-</span>
-          <a href="login" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/beer3.jpg">
-          <span class="card-title">BEER 3
-<div class="rating-box">
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_half</i>
-</div>
-</span>
-          <a href="login" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/beer4.jpg">
-          <span class="card-title">BEER 4
-<div class="rating-box">
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_border</i>
-</div>
-</span>
-          <a href="login" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/beer5.jpg">
-          <span class="card-title">BEER 5
-<div class="rating-box">
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_border</i>
-<i class="material-icons">star_border</i>
-</div>
-</span>
-          <a href="login" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m4">
-      <div class="card">
-        <div class="card-image">
-          <img src="/img/beer6.jpg">
-          <span class="card-title">BEER 6
-<div class="rating-box">
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_rate</i>
-<i class="material-icons">star_border</i>
-<i class="material-icons">star_border</i>
-<i class="material-icons">star_border</i>
-</div>
-</span>
-          <a href="login" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div> --}}
-    <!--Quest-->
+        
     <hr>
   <div class="row">
 
@@ -302,7 +150,7 @@
     <div class="row">
       <div class="col l6 s12">
         <h5 class="white-text">BEER RATE APP</h5>
-        <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet eros vel dolor eleifend dapibus nec at velit. </p>
+        <p class="grey-text text-lighten-4">Please drink responsibly.  If you know someone with a drinking problem, do not show them this website.  If you have an alcohol problem, please check out <a href="https://en.wikipedia.org/wiki/Orange_juice">this drink.</a>  </p>
       </div>
       <div class="col l3 s12">
         <h5 class="white-text">Partner With Us</h5>
@@ -373,6 +221,9 @@
     })
 
   //=======================================
+function refreshPage(){
+    window.location.reload();
+} 
 
   function getBeer() {
     var url = location.origin;
@@ -421,7 +272,7 @@
         var cardDiv = $("<div class=\"card\">");
         var cardImg = $("<div class=\"card-image\">");
         var img = $("<img src=\"" + label + "\" />");
-        var a = $('<a href=\"#\" data-obj=\'' + beerObject + '\'  class=\"btn-floating halfway-fab waves-effect waves-light red addBeer\"><i class=\"material-icons\">add</i></a>')
+        var a = $('<a href=\"#\" data-obj=\'' + beerObject + '\'  class=\"btn-floating halfway-fab waves-effect waves-light red addBeer\"><i class=\"material-icons\" onclick=\"refreshPage()\">add</i></a>')
         var title = $("<span class=\"card-title\">" + abv + "</span>")
         var descDiv = $("<div class=\"card-content\">");
         var p = $("<p>" + description + "</p>");
