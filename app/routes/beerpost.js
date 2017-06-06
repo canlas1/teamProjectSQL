@@ -14,7 +14,15 @@ module.exports = function(app) {
 
   //   });
   // });
-
+app.get("/api/like", function(req, res) {
+    console.log("BODY---",req.body);
+    // console.log('TEST',db.Beer);
+    // console.log('TEST',db.beer);
+    // db.beer.create(req.body).then(function(dbBeer) {
+    //   // res.json(dbBeer);
+    //   res.redirect("/dashboard")
+    // });
+  });
 
 
   app.post("/dashboard/api/beer", function(req, res) {
@@ -22,7 +30,7 @@ module.exports = function(app) {
     // console.log('TEST',db.beer);
     db.beer.create(req.body).then(function(dbBeer) {
       // res.json(dbBeer);
-      res.redirect("/dashboard/beer/")
+      res.redirect("/dashboard")
     });
   });
 

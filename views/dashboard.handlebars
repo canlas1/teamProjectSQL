@@ -59,7 +59,7 @@
                     <br>Origin: {{this.origin}}
                     <br>Type: {{this.type}}
                     </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    <a href="/api/like" id="liked-beer" class="secondary-content" data-beername="{{this.beername}}" data-breweryname="{{this.breweryname}}" data-origin="{{this.origin}}" data-type="{{this.type}}" data-username="{{username}}" ><i class="material-icons">thumb_up</i></a>
                 </li>
                 {{/each}}
             </ul>
@@ -384,3 +384,4 @@
     })
   }
 </script>
+<script src="/js/dash2.js" type="text/javascript"></script>
