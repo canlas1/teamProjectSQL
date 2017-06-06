@@ -23,12 +23,27 @@ exports.signin = function(req,res){
 }
 
 exports.dashboard = function(req,res){
+  var userId = req.session.passport.user;
+  var username = "";
 
+  db.user.findOne({
+    where: {
+      id: userId
+    }
+  }).then(function(user){
+    var user = user.get();
+    username = user.username
+      console.log("USER",username);
+
+  })
+  // console.log("usrname", req.user.username);
+  // console.log("displayName", req.session.passport);
   db.beer.findAll({
       // include: [db.beer]
     }).then(function(dbBeer) {
       var hbsObject = {
-      beer: dbBeer
+      beer: dbBeer,
+      username: username
     };
     return res.render("dashboard", hbsObject);
 
@@ -44,6 +59,13 @@ exports.beer = function(req,res){
     	var hbsObject = {
       beer: dbBeer
     };
+
+  // db.user.findAll({
+  //     // include: [db.beer]
+  //   }).then(function(dbUser) {
+  //     var userObject = {
+  //     user: dbUser
+  //   };
     return res.render("beer", hbsObject);
 
     });
