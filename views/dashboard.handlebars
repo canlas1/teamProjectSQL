@@ -68,25 +68,20 @@
 </div>
 
 <div class="row" id="beerBackground">
-    <hr>
-    <div class="center">
-      <h3>Recently Added Beers</h3>
-    </div>
-    <hr>
- {{#each beer}}
+      <ul class="collapsible" data-collapsible="accordion">
+      {{#each beer}}
     <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{this.name}}</div>
-        <div class="collapsible-body">
-          ABV: {{this.abv}}<br>
-                Description: {{this.description}}<br>
-                <img src="{{this.img}}" />
-          
-        </div>
-          </li>
+      <div class="collapsible-header"><i class="material-icons">stars</i>{{this.name}}</div>
+      <div class="collapsible-body">
+      <p>ABV: {{this.abv}}<br>
+        Description: {{this.description}}<br>
+        <img src="{{this.img}}" alt="" class="circle"></p></div>
+    </li>
     {{/each}}
-    <div id="beerHolder">
-    </div>
-  </div>
+  </ul>
+        
+
+
 
   {{!-- <!-- Modal Trigger -->
   <a class="waves-effect waves-light btn" href="dashboard/beer">Modal</a>
