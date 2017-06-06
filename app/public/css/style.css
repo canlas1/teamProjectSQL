@@ -136,6 +136,10 @@ footer.page-footer {
   padding-top: 190px;
 }
 
+.avatar p {
+  color: black;
+}
+
 hr{
     height: 5px;
     border-color: #f57f17;
