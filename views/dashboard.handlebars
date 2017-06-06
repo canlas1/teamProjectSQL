@@ -373,6 +373,49 @@
     })
 
   //=======================================
+<script type="text/javascript">
+  // ======================================
+
+  $("#input").on("keypress", function(e) {
+    if (e.which == 13) {
+      console.log('You pressed enter');
+      getBeer();
+    }
+  })
+
+  // ======================================
+
+
+  $("#button").on("click", function(e) {
+    e.preventDefault();
+    console.log("You pressed the button");
+    getBeer();
+  });
+
+  // ======================================
+
+    $(document).on("click", ".addBeer", function(e) {
+      e.preventDefault();
+      console.log("Clicked on beer object");
+      console.log(this);
+      console.log($(this).data("obj"));
+      var obj = $(this).data("obj")
+      console.log(obj)
+      var url = location.origin;
+      console.log(url);
+      url = url + "/api/add/beer";
+      console.log(url);
+      $.post({
+        data: obj,
+        url: url,
+        success: function(res) {
+          console.log("Successfully pushed up a beer mofucka")
+        }
+
+      })
+    })
+
+  //=======================================
 
   function getBeer() {
     var url = location.origin;
@@ -439,3 +482,7 @@
         }
 
 
+      }
+    })
+  }
+</script>
