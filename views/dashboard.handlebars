@@ -47,6 +47,22 @@
       frameborder="0" style="border:0; width:100%; height: 300px;" allowfullscreen></iframe>
   </div> --}}
 </div>
+
+<div class="section">
+    <div class="row">
+     <ul class="collapsible" data-collapsible="accordion">
+    {{#each beer}}
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{this.beername}}</div>
+        <div class="collapsible-body">
+          <span>Brewery: {{this.breweryname}}<br>
+                Origin: {{this.origin}}<br>
+                Type: {{this.type}}
+          </span>
+        </div>
+    </li>
+    {{/each}}
+
 <div class="section">
   <div class="row" id="beerBackground">
     <hr>
