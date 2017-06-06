@@ -50,12 +50,14 @@ exports.dashboard = function(req,res){
       // include: [db.beer]
     }).then(function(dbBeer) {
       console.log(dbBeer);
+
       var hbsObject = {
       beer: dbBeer,
       username: username,
       custombeer: custom
     };
     return res.render("dashboard", hbsObject);
+
 
     });
 

@@ -63,7 +63,6 @@ module.exports = function(passport,user,brewer){
           password:userPassword,
           firstname: req.body.firstname,
           lastname: req.body.lastname,
-          username: req.body.username
         };
         
 
