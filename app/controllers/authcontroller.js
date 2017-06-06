@@ -6,19 +6,19 @@ var exports = module.exports = {}
 
 exports.signup = function(req,res){
 
-	res.render('signup'); 
+  res.render('signup'); 
 
 }
 
 exports.forgot = function(req,res){
 
-	res.render('forgot'); 
+  res.render('forgot'); 
 
 }
 
 exports.signin = function(req,res){
 
-	res.render('signin'); 
+  res.render('signin'); 
 
 }
 
@@ -27,10 +27,8 @@ exports.dashboard = function(req,res){
   db.beer.findAll({
       // include: [db.beer]
     }).then(function(dbBeer) {
-      var hbsObject = {
-      beer: dbBeer
-    };
-    return res.render("dashboard", hbsObject);
+      console.log(dbBeer);
+    return res.render("dashboard", dbBeer);
 
     });
 
@@ -38,10 +36,10 @@ exports.dashboard = function(req,res){
 
 exports.beer = function(req,res){
 
-	db.beer.findAll({
+  db.beer.findAll({
       // include: [db.beer]
     }).then(function(dbBeer) {
-    	var hbsObject = {
+      var hbsObject = {
       beer: dbBeer
     };
     return res.render("user", hbsObject);
@@ -68,7 +66,7 @@ exports.user = function(req,res){
 }
 
 exports.logout = function(req,res){
-	console.log(req.session);
+  console.log(req.session);
   req.session.destroy(function(err) {
   res.redirect('/');
   });
@@ -76,5 +74,5 @@ exports.logout = function(req,res){
 }
 
 exports.addBeer = function(req,res) {
-	res.render('dashboard');
+  res.render('dashboard');
 }

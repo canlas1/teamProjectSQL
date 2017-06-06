@@ -61,7 +61,42 @@
   </div> --}}
 </div>
 
-<div class="section">
+<div class="row" id="beerBackground">
+    <hr>
+    <div class="center">
+      <h3>Recently Added Beers</h3>
+    </div>
+    <hr>
+ {{#each beer}}
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{this.name}}</div>
+        <div class="collapsible-body">
+          ABV: {{this.abv}}<br>
+                Description: {{this.description}}<br>
+                <img src="{{this.img}}" />
+          
+        </div>
+          </li>
+    {{/each}}
+    <div id="beerHolder">
+    </div>
+  </div>
+
+  {{!-- <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn" href="dashboard/beer">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="beer" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div> --}}
+
+{{!-- <div class="section">
     <div class="row">
      <ul class="collapsible" data-collapsible="accordion">
     {{#each beer}}
@@ -75,7 +110,7 @@
         </div>
     </li>
     {{/each}}
-
+ --}}
 <div class="section">
   <div class="row" id="beerBackground">
     <hr>
@@ -294,4 +329,113 @@
     </div>
   </div>
 </footer>
+
+<script type="text/javascript">
+  // ======================================
+
+  $("#input").on("keypress", function(e) {
+    if (e.which == 13) {
+      console.log('You pressed enter');
+      getBeer();
+    }
+  })
+
+  // ======================================
+
+
+  $("#button").on("click", function(e) {
+    e.preventDefault();
+    console.log("You pressed the button");
+    getBeer();
+  });
+
+  // ======================================
+
+    $(document).on("click", ".addBeer", function(e) {
+      e.preventDefault();
+      console.log("Clicked on beer object");
+      console.log(this);
+      console.log($(this).data("obj"));
+      var obj = $(this).data("obj")
+      console.log(obj)
+      var url = location.origin;
+      console.log(url);
+      url = url + "/api/add/beer";
+      console.log(url);
+      $.post({
+        data: obj,
+        url: url,
+        success: function(res) {
+          console.log("Successfully pushed up a beer mofucka")
+        }
+
+      })
+    })
+
+  //=======================================
+
+  function getBeer() {
+    var url = location.origin;
+    console.log(url);
+    console.log($("#input").val());
+    url = url + "/beers/" + $("#input").val();
+    console.log(url);
+
+
+
+    $.ajax({
+      type: "GET",
+      url: url,
+      dataType: 'json',
+      success: function(res) {
+        console.log(res);
+
+        for (var i = 0; 0 < 12; i++) {
+          console.log(res[i]);
+        var name = res[i].name;
+        var abv = res[i].abv;
+        var description = res[i].description;
+        if (description) {
+          description = description.slice(0, description.indexOf("."));
+        } else {
+          description= "Not currently available biotch";
+        }
+        
+        var label = res[i].labels.medium;
+        if (label == undefined) {
+          label = "/img/label.jpeg";
+        } 
+
+        var beerObject = {
+          name: name,
+          abv: abv,
+          description: description,
+          label: label
+        }
+        beerObject = JSON.stringify(beerObject)
+        console.log(beerObject)
+
+        // ==========================================
+
+        var colDiv = $("<div class=\"col s12 m4\">");
+        var cardDiv = $("<div class=\"card\">");
+        var cardImg = $("<div class=\"card-image\">");
+        var img = $("<img src=\"" + label + "\" />");
+        var a = $('<a href=\"#\" data-obj=\'' + beerObject + '\'  class=\"btn-floating halfway-fab waves-effect waves-light red addBeer\"><i class=\"material-icons\">add</i></a>')
+        var title = $("<span class=\"card-title\">" + abv + "</span>")
+        var descDiv = $("<div class=\"card-content\">");
+        var p = $("<p>" + description + "</p>");
+
+        descDiv.append(p);
+        cardImg.append(img);
+        cardImg.append(title);
+        cardImg.append(a);
+        cardDiv.append(cardImg);
+        cardDiv.append(descDiv);
+        colDiv.append(cardDiv);
+        $("#beerHolder").append(colDiv);
+
+        $("#input").val("")
+        }
+
 
