@@ -27,10 +27,8 @@ exports.dashboard = function(req,res){
   db.beer.findAll({
       // include: [db.beer]
     }).then(function(dbBeer) {
-      var hbsObject = {
-      beer: dbBeer
-    };
-    return res.render("dashboard", hbsObject);
+      console.log(dbBeer);
+    return res.render("dashboard", dbBeer);
 
     });
 
