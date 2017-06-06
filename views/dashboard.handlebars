@@ -47,8 +47,11 @@
   </div> --}}
 </div>
 
-<div class="section">
+
     <div class="row">
+    <div class="center">
+            <hr id="no-top-margin"><h3>UNIQUE ENTRIES</h3><hr>
+        </div>
       <div class="col s6 offset-s3">
         <ul class="collection">
                 {{#each custombeer}}
@@ -65,20 +68,34 @@
             </ul>
       </div>
     </div>
-</div>
 
-<div class="row" id="beerBackground">
-      <ul class="collapsible" data-collapsible="accordion">
-      {{#each beer}}
-    <li>
-      <div class="collapsible-header"><i class="material-icons">stars</i>{{this.name}}</div>
-      <div class="collapsible-body">
-      <p>ABV: {{this.abv}}<br>
-        Description: {{this.description}}<br>
-        <img src="{{this.img}}" alt="" class="circle"></p></div>
-    </li>
-    {{/each}}
-  </ul>
+
+<div class="section">
+    <div class="row" id="beerBackground">
+        <hr>
+        <div class="center">
+            <h3>SELECTED BEERS</h3>
+        </div>
+        <hr>
+        <div id="beerHolder">
+            <div class="col s6 offset-s3">
+                <ul class="collapsible" data-collapsible="accordion">
+                    {{#each beer}}
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">stars</i>{{this.name}}</div>
+                        <div class="collapsible-body">
+                            <p>ABV: {{this.abv}}
+                                <br> Description: {{this.description}}
+                                <br>
+                                <img src="{{this.img}}" alt="" class="circle"></p>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
         
 
 
@@ -112,7 +129,7 @@
     </li>
     {{/each}}
  --}}
-<div class="section">
+{{!-- <div class="section">
   <div class="row" id="beerBackground">
     <hr>
     <div class="center">
@@ -122,7 +139,7 @@
 
     <div id="beerHolder">
     </div>
-  </div>
+  </div> --}}
    {{!--  <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
@@ -302,7 +319,7 @@
     <div class="row">
       <div class="col l6 s12">
         <h5 class="white-text">BEER RATE APP</h5>
-        <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet eros vel dolor eleifend dapibus nec at velit. </p>
+        <p class="grey-text text-lighten-4">Please drink responsibly.  If you know someone with a drinking problem, do not show them this website.  If you have an alcohol problem, please check out <a href="https://en.wikipedia.org/wiki/Orange_juice">this drink.</a>  </p>
       </div>
       <div class="col l3 s12">
         <h5 class="white-text">Partner With Us</h5>
@@ -373,6 +390,9 @@
     })
 
   //=======================================
+function refreshPage(){
+    window.location.reload();
+} 
 
   function getBeer() {
     var url = location.origin;
@@ -421,7 +441,7 @@
         var cardDiv = $("<div class=\"card\">");
         var cardImg = $("<div class=\"card-image\">");
         var img = $("<img src=\"" + label + "\" />");
-        var a = $('<a href=\"#\" data-obj=\'' + beerObject + '\'  class=\"btn-floating halfway-fab waves-effect waves-light red addBeer\"><i class=\"material-icons\">add</i></a>')
+        var a = $('<a href=\"#\" data-obj=\'' + beerObject + '\'  class=\"btn-floating halfway-fab waves-effect waves-light red addBeer\"><i class=\"material-icons\" onclick=\"refreshPage()\">add</i></a>')
         var title = $("<span class=\"card-title\">" + abv + "</span>")
         var descDiv = $("<div class=\"card-content\">");
         var p = $("<p>" + description + "</p>");

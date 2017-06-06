@@ -150,6 +150,12 @@ h3{
   color: #795548;
 }
 
+#no-top-margin{
+margin-top: 0;
+margin-bottom: 0;
+height: 12px;
+}
+
 .rating-box{
   width: 100%;
 }
