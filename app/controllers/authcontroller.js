@@ -24,7 +24,15 @@ exports.signin = function(req,res){
 
 exports.dashboard = function(req,res){
 
-	res.render('dashboard'); 
+  db.beer.findAll({
+      // include: [db.beer]
+    }).then(function(dbBeer) {
+      var hbsObject = {
+      beer: dbBeer
+    };
+    return res.render("dashboard", hbsObject);
+
+    });
 
 }
 
