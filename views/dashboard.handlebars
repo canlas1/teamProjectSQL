@@ -47,6 +47,26 @@
   </div> --}}
 </div>
 
+<div class="section">
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <ul class="collection">
+                {{#each custombeer}}
+                <li class="collection-item avatar">
+                    <img src="/img/Beer-icon.png" alt="" class="circle">
+                    <span class="title">{{this.beername}}</span>
+                    <p>Brewery: {{this.breweryname}} 
+                    <br>Origin: {{this.origin}}
+                    <br>Type: {{this.type}}
+                    </p>
+                    <a href="/api/like" id="liked-beer" class="secondary-content" data-beername="{{this.beername}}" data-breweryname="{{this.breweryname}}" data-origin="{{this.origin}}" data-type="{{this.type}}" data-username="{{username}}" ><i class="material-icons">thumb_up</i></a>
+                </li>
+                {{/each}}
+            </ul>
+      </div>
+    </div>
+</div>
+
 <div class="row" id="beerBackground">
     <hr>
     <div class="center">

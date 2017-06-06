@@ -23,8 +23,10 @@ exports.signin = function(req,res){
 }
 
 exports.dashboard = function(req,res){
+
   var userId = req.session.passport.user;
   var username = "";
+  var custom;
 
   db.user.findOne({
     where: {
@@ -36,13 +38,25 @@ exports.dashboard = function(req,res){
       console.log("USER",username);
 
   })
-  // console.log("usrname", req.user.username);
-  // console.log("displayName", req.session.passport);
+
+  db.custombeer.findAll({
+    
+  }).then(function(dbCust){
+    custom = dbCust
+
+  })
+
   db.beer.findAll({
       // include: [db.beer]
     }).then(function(dbBeer) {
       console.log(dbBeer);
-    return res.render("dashboard", dbBeer);
+
+      var hbsObject = {
+      beer: dbBeer,
+      username: username,
+      custombeer: custom
+    };
+    return res.render("dashboard", hbsObject);
 
 
     });
@@ -57,13 +71,6 @@ exports.beer = function(req,res){
     	var hbsObject = {
       beer: dbBeer
     };
-
-  // db.user.findAll({
-  //     // include: [db.beer]
-  //   }).then(function(dbUser) {
-  //     var userObject = {
-  //     user: dbUser
-  //   };
     return res.render("beer", hbsObject);
 
     });
